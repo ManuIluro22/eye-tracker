@@ -2,7 +2,7 @@ import pygame
 from utils import get_config
 
 # Read config.ini file
-SETTINGS, COLOURS, EYETRACKER, TF = get_config("config.ini")
+SETTINGS, COLOURS, EYETRACKER, TF = get_config("src/config.ini")
 
 
 class Target:

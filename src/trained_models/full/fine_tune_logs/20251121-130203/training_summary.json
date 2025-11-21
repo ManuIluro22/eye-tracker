@@ -1,0 +1,23 @@
+{
+  "timestamp": "20251121-130203",
+  "pretrained_model": "src\\trained_models\\full\\eyetracking_model_pretrained.pt",
+  "data_samples": 4236,
+  "hyperparameters": {
+    "lr": 0.0001,
+    "bs": 32,
+    "num_epochs": 15,
+    "seed": 87,
+    "lr_scheduler": "reduce_on_plateau",
+    "lr_patience": 5,
+    "lr_factor": 0.5,
+    "lr_min": 1e-06
+  },
+  "final_metrics": {
+    "val_loss": 112.4089126586914,
+    "val_mae": 112.90873718261719,
+    "val_rmse": 147.39190673828125
+  },
+  "best_checkpoint": "C:\\Users\\manue\\Desktop\\Eye_Tracker\\eye-tracker-vocacions\\src\\trained_models\\full\\fine_tune_logs\\20251121-130203\\fine_tuned-epoch=14-val_loss=112.409.ckpt",
+  "output_model": "src\\trained_models\\full\\fine_tuned_eyetracking_model.pt",
+  "log_directory": "src\\trained_models\\full\\fine_tune_logs\\20251121-130203"
+}

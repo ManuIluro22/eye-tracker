@@ -1,9 +1,9 @@
+import mediapipe as mp
 import cv2
 import json
 import queue
 import threading
 import numpy as np
-import mediapipe as mp
 import torch
 from pathlib import Path
 from torchvision import transforms
@@ -12,7 +12,7 @@ from utils import _build_model
 from utils import get_config, getLeftEye, getRightEye
 
 # Read config.ini file
-SETTINGS, COLOURS, EYETRACKER, TF = get_config("config.ini")
+SETTINGS, COLOURS, EYETRACKER, TF = get_config("src/config.ini")
 SCALE_X = 1.25
 
 class Detector:
@@ -44,7 +44,7 @@ class Detector:
         )
 
         # Load landmarks from JSON
-        with open('./landmarks.json', 'r') as f:
+        with open('src/landmarks.json', 'r') as f:
             landmarks = json.load(f)
 
         self.LEFT_EYE = landmarks["LEFT_EYE"]
@@ -53,7 +53,7 @@ class Detector:
         self.RIGHT_IRIS = landmarks["RIGHT_IRIS"]
 
         # Threaded webcam capture
-        self.capture = cv2.VideoCapture(1, cv2.CAP_DSHOW)
+        self.capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
         self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
         self.capture.set(cv2.CAP_PROP_FPS, 30)

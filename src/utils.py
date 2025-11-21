@@ -40,18 +40,32 @@ drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)
 def get_config(path="config.ini", comment_char=";"):
     config_file = ConfigParser(inline_comment_prefixes=comment_char)
     config_file.read(path)
-
+    print(config_file)
     config_default = config_file["DEFAULT"]
     config_colours = config_file["COLOURS"]
     config_eyetracker = config_file["EYETRACKER"]
     config_tf = config_file["TF"]
 
-    settings = {key: ast.literal_eval(config_default[key]) for key in config_default}
-    colours = {key: ast.literal_eval(config_colours[key]) for key in config_colours}
+    def safe_literal_eval(value):
+        """Safely evaluate config value, handling strings and other literals."""
+        value = value.strip()
+        try:
+            return ast.literal_eval(value)
+        except (ValueError, SyntaxError):
+            # If literal_eval fails, treat as string (remove quotes if present)
+            if value.startswith('"') and value.endswith('"'):
+                return value[1:-1]
+            elif value.startswith("'") and value.endswith("'"):
+                return value[1:-1]
+            else:
+                return value  # Return as-is (unquoted string)
+
+    settings = {key: safe_literal_eval(config_default[key]) for key in config_default}
+    colours = {key: safe_literal_eval(config_colours[key]) for key in config_colours}
     eyetracker = {
-        key: ast.literal_eval(config_eyetracker[key]) for key in config_eyetracker
+        key: safe_literal_eval(config_eyetracker[key]) for key in config_eyetracker
     }
-    tf = {key: ast.literal_eval(config_tf[key]) for key in config_tf}
+    tf = {key: safe_literal_eval(config_tf[key]) for key in config_tf}
 
     return settings, colours, eyetracker, tf
 
