@@ -19,8 +19,8 @@ A real-time eye-tracking application to analyze implicit career interests of hig
 
 ### 1. Clone the Repository
 ```sh
-git clone https://github.com/YssfDevOps/eye-tracker-vocacions.git
-cd eye-tracker-vocacions
+git clone https://github.com/ManuIluro22/eye-tracker.git
+cd eye-tracker
 ```
 
 ### 2. Set Up a Virtual Environment
