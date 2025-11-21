@@ -1,3 +1,5 @@
+NOTE: This is a continuation of https://github.com/YssfDevOps/eye-tracker-vocacions, improving on it and making it usable
+
 # Eye Tracker for Academic Vocations
 
 A real-time eye-tracking application to analyze implicit career interests of high-school students. By comparing where students actually look (gaze trajectory) with their explicit choices, this tool delivers richer vocational guidance.
